@@ -5,7 +5,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/rakd/how_to_start_golang_with_echo/hello/controllers"
+	"github.com/rakd/how_to_start_golang_with_echo/01hello/controllers"
 )
 
 func init() {
