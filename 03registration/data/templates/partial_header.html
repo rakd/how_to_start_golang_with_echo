@@ -1,0 +1,17 @@
+{{define "partial_header"}}
+    <a href="/">home</a>
+    {{if .is_login}}
+        |
+        <a href="/dashboard">dashboard</a>
+        |    
+        <a href="/logout">logout</a>
+    {{else}}
+        |
+        <a href="/signup">signup</a>
+        |
+        <a href="/login">login</a>
+    {{end}}
+    <hr />
+    {{template "partials_flash" .}}
+    
+{{end}}

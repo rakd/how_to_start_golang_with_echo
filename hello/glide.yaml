@@ -1,0 +1,7 @@
+package: github.com/rakd/how_to_start_golang_with_echo/hello
+import:
+- package: github.com/rakd/how_to_start_golang_with_echo
+  subpackages:
+  - 01hello/controllers
+- package: github.com/labstack/echo
+  version: ^3.2.3

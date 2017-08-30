@@ -119,7 +119,7 @@ ref: https://docs.docker.com/docker-for-mac/install/
 
 -----
 
-# Hello Echo 
+# 01Hello Echo 
 
 ## move to hello dir
 
@@ -184,7 +184,7 @@ $ ./main
 
 ------
 
-# form sample with csrf/session/template/bindata.
+#02 form sample with csrf/session/template/bindata.
 
 ref: https://echo.labstack.com/guide/templates
 
@@ -252,6 +252,37 @@ you can just use `make`, then you can access http://localhost:3000/
 
 
 ----
+
+# 03 registration 
+
+it includes 
+- flush message 
+- database 
+etc
+
+
+## prepare dir 
+
+```
+$ mkdir 03registration
+$ cd 03registration
+```
+
+```
+$ glide get "github.com/jinzhu/gorm/dialects/mysql"
+$ glide get "github.com/jinzhu/gorm"
+
+```
+## prepare commong logic in controllers/init-common.go
+
+## prepare flash message template in data/templates/partial_flash.html
+
+## prepare models 
+
+## prepare signup/login controllers 
+
+
+etcetc...
 
 
 

@@ -10,6 +10,6 @@ import (
 func WelcomeHandler() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		log.Print("WelcomeHandler")
-		return c.HTML(200, "hello")
+		return c.HTML(200, "howllow")
 	}
 }
