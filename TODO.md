@@ -2,7 +2,7 @@
 
 # TODOs
 
-- user registration with database
+- user registration with database / flush message 
 - twitter auth
 - google auth 
 - docker sample
