@@ -16,12 +16,8 @@ func DashboardHandler() echo.HandlerFunc {
 		isLogin := false
 		session := session.Default(c)
 		if val := session.Get("is_login"); val != nil {
-			log.Print("")
 			isLogin, ok := val.(bool)
 			if !ok || !isLogin {
-				log.Print("")
-				log.Print(ok)
-				log.Print(isLogin)
 				return c.Redirect(302, "/login")
 			}
 		}
