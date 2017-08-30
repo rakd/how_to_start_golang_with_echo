@@ -286,3 +286,97 @@ etcetc...
 
 
 
+------
+
+
+----
+
+# 04 basic auth for admin pages 
+
+it includes 
+- basic auth 
+- cool logging
+
+## basic auth
+
+```
+
+	adminGroup := engine.Group("/admin")
+	//basic auth for admin page
+	adminGroup.Use(middleware.BasicAuth(func(username, password string, c echo.Context) (bool, error) {
+		if username == "test" && password == "test" {
+			return true, nil
+		}
+		return false, nil
+	}))
+
+	adminGroup.GET("", controllers.AdminIndexHandler())
+	adminGroup.GET("/", controllers.AdminIndexHandler())
+
+```
+
+## cool logging
+
+```
+	// cool custom logging
+	engine.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Format: `${method} | ${status} | ${uri} -> ${latency_human}` + "\n",
+	}))
+```
+------
+
+# 05 google auth for admin pages
+
+
+
+## glide get
+
+```
+$ glide get "golang.org/x/oauth2"
+$ glide get "github.com/satori/go.uuid"
+```
+
+## controllers/google.go
+## handler in main.go
+
+```
+	engine.GET("/auth/google/login", controllers.AuthGoogleLoginHandler())
+	engine.GET("/auth/google/callback", controllers.AuthGoogleCallbackHandler())
+	engine.GET("/auth/google/logout", controllers.AuthGoogleLogoutHandler())
+```
+## middleware in main.go
+
+```
+
+	// google auth for admin
+	adminGroup.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+
+		return func(c echo.Context) error {
+
+			adminEmails := map[string]bool{}
+			adminEmails["rakd0930@gmail.com"] = true
+
+			session := session.Default(c)
+			googleEmailTmp := session.Get("google_oauth_email")
+			googleEmail, ok := googleEmailTmp.(string)
+			if !ok || googleEmailTmp == nil || googleEmail == "" {
+				log.Print("need to login via google oauth")
+				return c.Redirect(302, "/auth/google/login")
+			}
+			if !adminEmails[googleEmail] {
+				//NG, non admin google email
+				return c.Redirect(302, "/auth/google/login")
+			}
+			// OK
+			//before
+
+			err := next(c)
+			//after
+
+			return err
+		}
+	})
+
+```
+
+

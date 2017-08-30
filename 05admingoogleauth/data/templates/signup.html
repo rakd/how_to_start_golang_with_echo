@@ -1,0 +1,17 @@
+{{define "signup"}}
+    {{template "partial_header" .}}
+    signup
+    <hr />
+
+    <form action="/signup" method="post">
+    {{if .csrf_token}}<input type="hidden" name="csrf_token" value="{{.csrf_token}}" />{{end}}
+    Email: <input type="text" name="email" value="{{.email}}" />
+    <br />
+    Password:<input type="password" name="password" />
+    <br />
+    Password2:<input type="password" name="password2" />
+    <br />
+    <input type="submit" name="submit" value="signup" />
+    </form>
+    <hr />
+{{end}}
