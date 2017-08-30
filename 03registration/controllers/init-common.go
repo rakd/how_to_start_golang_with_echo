@@ -19,7 +19,7 @@ func init() {
 }
 
 // RenderTemplate ...
-func RenderTemplate(c echo.Context, tmpl string, datatmp interface{}) error {
+atomfunc RenderTemplate(c echo.Context, tmpl string, datatmp interface{}) error {
 	log.Print("RenderTemplate")
 	data := map[string]interface{}{}
 	list, ok := datatmp.(map[string]interface{})

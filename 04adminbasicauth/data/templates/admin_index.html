@@ -1,0 +1,22 @@
+{{define "admin_index"}}
+  {{ template "partials_admin_header" . }}
+  <h1>admin</h1>
+
+  <ul>
+    <li>
+      <a href="/admin/users">users</a>
+    </li>
+    <li>
+      <a href="/admin/bots">bots</a>
+    </li>
+    <li>
+      <a href="/admin/scheduled_tweets">scheduled tweets</a>
+    </li>
+    <li>
+      <a href="/admin/follower_rules">follower rules</a>
+    </li>
+  </ul>
+
+  <hr />
+
+{{end}}
